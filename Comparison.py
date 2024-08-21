@@ -34,6 +34,11 @@ if uploaded_file is not None:
     AP_Non_Manager_index = df_eng_other_removed[df_eng_other_removed['Manager'] == False][df_eng_other_removed['What department are you in?']=='a. (AP)'].index.tolist()
     DX_Manager_index = df_eng_other_removed[df_eng_other_removed['Manager']][df_eng_other_removed['What department are you in?']!='a. (AP)'].index.tolist()
     DX_Non_Manager_index = df_eng_other_removed[df_eng_other_removed['Manager'] == False][df_eng_other_removed['What department are you in?']!='a. (AP)'].index.tolist()
+    OJT_first_index = df_eng[df_eng['d. OJT']=='1st place'].index.tolist()
+    OJT_second_index = df_eng[df_eng['d. OJT']=='2nd place'].index.tolist()
+    OJT_third_index = df_eng[df_eng['d. OJT']=='Third'].index.tolist()
+    OJT_selected_index = df_eng[((df_eng['d. OJT']=='1st place') | (df_eng['d. OJT']=='2nd place') | (df_eng['d. OJT']=='Third')) == True].index.tolist()
+    OJT_NA_index = df_eng[((df_eng['d. OJT']=='1st place') | (df_eng['d. OJT']=='2nd place') | (df_eng['d. OJT']=='Third')) == False].index.tolist()
     
     group_dic = {'AP Managers':AP_Manager_index,
     'AP Non-Managers':AP_Non_Manager_index,
@@ -42,7 +47,12 @@ if uploaded_file is not None:
     'Managers':Manager_index,
     'Non-Managers':Non_Manager_index,
     'AP':AP_index,
-    'DX':DX_index}
+    'DX':DX_index,
+    'OJT first:':OJT_first_index,
+    'OJT second:':OJT_second_index,
+    'OJT third:':OJT_third_index,
+    'OJT selected':OJT_selected_index,
+    'OJT not selected:':OJT_NA_index,}
     
     Question_num = st.sidebar.selectbox("Which question to analyse",('Question 6','Question 7','Question 8','Question 19','Question 20','Question 23','Question 24','Question 27','Question 28','Question 31','Question 32','Question 33','Question 34'))
     
